@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ header.title | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-menu contentId="mainContent" [menu]="header.menu">
+</app-menu>
+<!-- <app-menu contentId="mainContent" [menu]="header.menu">
+
+</app-menu> -->

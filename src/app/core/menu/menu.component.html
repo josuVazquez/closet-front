@@ -1,0 +1,16 @@
+<ion-menu side="start" menuId="first" contentId="menuContent">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>{{menu.title | translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of menu.list">
+        <ion-icon [name]="item.icon" slot="start"></ion-icon>
+        <ion-label>{{item.label | translate}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+

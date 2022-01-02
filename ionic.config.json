@@ -1,0 +1,7 @@
+{
+  "name": "MyCloset",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

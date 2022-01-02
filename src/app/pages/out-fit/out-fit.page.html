@@ -1,0 +1,37 @@
+<app-header>
+</app-header>
+
+<ion-content class="content">
+  <ion-item>
+    <img [src]="imageSrc" (click)="selectImage()"/>
+  </ion-item>
+  <ion-item>
+    <ion-label>Temporada</ion-label>
+    <ion-select placeholder="Selecciona uno">
+      <ion-select-option value="verano">Verano</ion-select-option>
+      <ion-select-option value="invierno">Invierno</ion-select-option>
+      <ion-select-option value="entreTiempo">Entre Tiempo</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Tipo</ion-label>
+    <ion-select placeholder="Selecciona uno">
+      <ion-select-option value="verano">Verano</ion-select-option>
+      <ion-select-option value="invierno">Invierno</ion-select-option>
+      <ion-select-option value="outFit">Out Fit</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Descripcion</ion-label>
+    <ion-input placeholder="Descripcion"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Complementos</ion-label>
+    <app-list [list]="list">
+
+    </app-list>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,30 @@
+@import "/src/utils/mixin.scss";
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 90%;
+    max-height: 320px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ion-item {
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    @include medium {
+        width: 70%;
+    }
+    @include large {
+        width: 60%;
+    }
+    @include extraLarge {
+        width: 50%;
+    }
+}

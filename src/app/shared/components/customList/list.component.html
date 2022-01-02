@@ -1,0 +1,13 @@
+<ion-list>
+  <ion-list-header *ngIf="list.header"> {{list.header}}</ion-list-header>
+
+  <ion-item *ngFor="let item of list.listItem">
+
+    <ion-avatar *ngIf="item.image">
+    </ion-avatar>
+    <ion-label>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description}} </p>
+    </ion-label>
+  </ion-item>
+</ion-list>

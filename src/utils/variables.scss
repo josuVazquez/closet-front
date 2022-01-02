@@ -1,0 +1,28 @@
+:root {
+    --mia-primary-color: #E86600;
+    --mia-primary-color-clear: #d81e0544;
+    --mia-secondary-color: #f02a0f;
+    --mia-primary-contrast-color: #ffffff;
+    --mia-black: #2d373d;
+    --mia-gray: #526570;
+    --mia-border-color: #cccfd2;
+    --mia-light-gray: #e8ebed;
+    --mia-progress-bar-back: #f6f6f6;
+    --mia-background-gray: #f5f6f7;
+    --mia-white: #ffffff;
+    --mia-card-border-color: #dadada;
+    --mia-global-border-radius: 10px;
+    --mia-inner-border-radius: 5px;
+    --mia-shadow: #b4b4b43d;
+    --mia-card-border-size: 1px;
+    --mia-btn-disabled: #d2d4cf;
+    --mia-default-font-size: 14px;
+    --url-splash: url("https://pwa-mia-1-int-s3-data.s3.eu-west-1.amazonaws.com/img/velero.png");
+    --mia-float-btn-width: 56px;
+    --mia-float-btn-height: 56px;
+    --mia-float-btn-border-radius: 50%;
+    --mia-background: white;
+    --mia-backdrop: rgba(45, 55, 61, 0.65);
+    --mia-gradient-clear: rgb(165, 23, 131, 0.4);
+    --mia-gradient-dark: rgb(165, 23, 131);
+}
