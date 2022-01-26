@@ -8,8 +8,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { LoadingInterceptor } from '@core/loading.interceptor';
+import { EffectsModule } from '@ngrx/effects';
+
+import { ItemEffects } from '@shared/item/redux/item.effect';
+import { StoreModule } from '@ngrx/store';
+import { itemReducer } from '@shared/item/redux/item.reducers';
 
 export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -27,9 +33,14 @@ export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoad
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    EffectsModule.forRoot([ItemEffects]),
+    StoreModule.forRoot({itemReducer}),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

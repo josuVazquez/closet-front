@@ -5,7 +5,7 @@
   <!-- <ion-item>
     <img [src]="imageSrc" (click)="selectImage()"/>
   </ion-item> -->
-  <form [formGroup]="outfitForm" class="content">
+  <form [formGroup]="itemForm" class="content">
     <app-image-carousel>
 
     </app-image-carousel>
@@ -18,12 +18,9 @@
       </ion-select>
     </ion-item>
 
-    <!-- <ion-item>
-      <ion-label>Tipo de Prenda</ion-label>
-
-      <ion-select placeholder="Selecciona un tipo de prenda"
-        [(ngModel)]="type">
-        <ion-select-option value="outFit">OutFit</ion-select-option>
+    <ion-item>
+      <ion-label>Typo de complemento</ion-label>
+      <ion-select placeholder="Selecciona uno" formControlName="type">
         <ion-select-option value="top">Top</ion-select-option>
         <ion-select-option value="cropTop">Crop Top</ion-select-option>
         <ion-select-option value="outFit">Sudadera</ion-select-option>
@@ -40,7 +37,7 @@
         <ion-select-option value="zapDeporte">Zapatillas de deporte</ion-select-option>
         <ion-select-option value="zapVestir">Zapatos de vestir</ion-select-option>
       </ion-select>
-    </ion-item> -->
+    </ion-item>
 
     <ion-item>
       <ion-label>Name</ion-label>
@@ -51,24 +48,13 @@
       <ion-label>Descripcion</ion-label>
       <ion-input placeholder="Descripcion" formControlName="description"></ion-input>
     </ion-item>
-    
-    <ion-item>
-      <ion-label>Complementos</ion-label>
-      <ion-item class="full-width" (click)="addItemToOutfit()">
-        <ion-icon slot="end" name="add-circle-outline"></ion-icon>
-        <ion-label>Añadir complemento</ion-label>
-      </ion-item>
-      <app-list [list]="list" >
-
-      </app-list>
-    </ion-item>
 
     <div class="buttons">
       <ion-button>
         Cancelar
       </ion-button>
       
-      <ion-button (click)="saveOutfit()">
+      <ion-button (click)="saveItem()">
         Guardar
       </ion-button>
     </div>

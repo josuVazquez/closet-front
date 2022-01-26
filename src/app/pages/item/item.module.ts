@@ -4,12 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { OutFitPageRoutingModule } from './out-fit-routing.module';
+import { ItemPageRoutingModule } from './item-routing.module';
 
-import { OutFitPage } from './out-fit.page';
-import { ListModule } from '@shared/components/customList/list.module';
+import { ItemPage } from './item.page';
 import { CoreModule } from '@core/core.module';
 import { ImageCarouselModule } from '@shared/components/image-carousel/image-carousel.module';
+import { ListModule } from '@shared/components/customList/list.module';
 
 @NgModule({
   imports: [
@@ -17,11 +17,12 @@ import { ImageCarouselModule } from '@shared/components/image-carousel/image-car
     ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    OutFitPageRoutingModule,
-    ListModule,
+    ItemPageRoutingModule,
     CoreModule,
     ImageCarouselModule,
+    ListModule
+
   ],
-  declarations: [OutFitPage]
+  declarations: [ItemPage]
 })
-export class OutFitPageModule {}
+export class ItemPageModule {}

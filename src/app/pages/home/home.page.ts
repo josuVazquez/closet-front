@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Header } from '@core/header/header.model';
-import { Menu, MenuOption } from '@core/menu/menu.model';
+import { AppState } from '@capacitor/app';
+import { Store } from '@ngrx/store';
+import { loadItems } from '@shared/item/redux/item.actions';
+import { loadOutfits } from '@shared/outfit/redux/outfit.actions';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,9 @@ import { Menu, MenuOption } from '@core/menu/menu.model';
 export class HomePage {
 
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
+    this.store.dispatch(loadOutfits());
+    this.store.dispatch(loadItems());
   }
-
+  
 }

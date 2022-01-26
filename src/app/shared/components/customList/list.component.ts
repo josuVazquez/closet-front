@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { List } from './list.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { List, ListItem } from './list.model';
 
 @Component({
   selector: 'app-list',
@@ -7,8 +7,9 @@ import { List } from './list.model';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  @Input() list: List = new List();
+  @Output() itemClick: EventEmitter<ListItem> = new EventEmitter();
 
-  list: List = new List();
   constructor() { }
 
   ngOnInit() {}
