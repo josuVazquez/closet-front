@@ -5,7 +5,7 @@ import { Outfit } from '@shared/outfit/outfit.model';
 import { ModalController } from '@ionic/angular';
 import { AddItemComponent } from '@shared/components/add-item/add-item.component';
 import { List } from '@shared/components/customList/list.model';
-import { OutfitService } from '@shared/outfit/outfit.service';
+import { OutfitService } from '@shared/outfit/api/outfit.service';
 
 const IMAGE_DIR = 'stored-images';
 

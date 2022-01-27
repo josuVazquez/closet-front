@@ -9,8 +9,8 @@ export const itemReducer = createReducer(
     ...state,
     [outfit.id]: outfit
   })),
-  on(loadOutfitsSuccess, (state, {outfits}) => outfits.reduce((acc, item) => ({
+  on(loadOutfitsSuccess, (state, {outfits}) => outfits.reduce((acc, outfit) => ({
     ...acc,
-    [item.id]: item
+    [outfit.id]: outfit
   }), {}))
 );

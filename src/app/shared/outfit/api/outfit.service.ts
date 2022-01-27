@@ -15,6 +15,7 @@ export class OutfitService {
   constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) { }
 
   getOutfits() {
+    debugger;
     const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
     return this.http.get(`${this.url}`, {headers}).pipe(catchError(
     (error) => {

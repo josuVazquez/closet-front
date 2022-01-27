@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(translate: TranslateService, headerService: HeaderService) {
     translate.setDefaultLang('es');
 
-    headerService.getHeaderData().subscribe( res => {
+    headerService.getHeaderData$().subscribe( res => {
       this.header = res;
     });
   }

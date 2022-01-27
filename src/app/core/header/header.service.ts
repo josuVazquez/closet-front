@@ -18,7 +18,7 @@ export class HeaderService {
   private headerData: BehaviorSubject<Header> = new BehaviorSubject(this.header);
 
 
-  public getHeaderData(): Observable<Header> {
+  public getHeaderData$(): Observable<Header> {
     return this.headerData.asObservable();
   }
 }

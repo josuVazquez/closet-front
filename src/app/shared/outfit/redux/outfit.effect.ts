@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 import { map, catchError, switchMap } from "rxjs/operators";
 import { loadOutfits, loadOutfitsError, loadOutfitsSuccess } from './outfit.actions';
 import { of } from 'rxjs';
-import { OutfitService } from '../outfit.service';
 import { Outfit } from '../outfit.model';
+import { OutfitService } from '../api/outfit.service';
 
 
 @Injectable()
-export class ItemEffects {
+export class OutfitEffects {
   loadOutfits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadOutfits),

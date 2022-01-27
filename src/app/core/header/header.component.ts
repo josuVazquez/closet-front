@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   headerSubscription: any;
 
   constructor(private headerService: HeaderService) {
-    this.headerService.getHeaderData().subscribe( data => {
+    this.headerService.getHeaderData$().subscribe( data => {
       this.header = data;
     });
   }

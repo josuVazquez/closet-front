@@ -12,10 +12,13 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { CoreModule } from './core/core.module';
 import { LoadingInterceptor } from '@core/loading.interceptor';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { ItemEffects } from '@shared/item/redux/item.effect';
 import { StoreModule } from '@ngrx/store';
 import { itemReducer } from '@shared/item/redux/item.reducers';
+import { OutfitEffects } from '@shared/outfit/redux/outfit.effect';
+import { environment } from '@environment';
 
 export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -34,8 +37,12 @@ export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoad
         deps: [HttpClient]
       }
     }),
-    EffectsModule.forRoot([ItemEffects]),
+    EffectsModule.forRoot([ItemEffects, OutfitEffects]),
     StoreModule.forRoot({itemReducer}),
+    StoreDevtoolsModule.instrument({
+      name: 'NgRx Demo App',
+      logOnly: environment.production
+    })
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
