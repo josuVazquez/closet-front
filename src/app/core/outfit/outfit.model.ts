@@ -1,12 +1,12 @@
 export class Outfit {
     id: string;
-    img:Array<any>;
+    img: Array<any>;
     name: string;
     description: string;
     temporada: string;
     complements: Array<any>;
 
-    constructor(data:Partial<Outfit> = {}) {
+    constructor(data: Partial<Outfit> = {}) {
         if(!data.name) {
             new Error('Name is requiered');
             return;

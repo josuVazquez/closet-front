@@ -14,13 +14,26 @@ import { LoadingInterceptor } from '@core/loading.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { ItemEffects } from '@shared/item/redux/item.effect';
-import { StoreModule } from '@ngrx/store';
-import { itemReducer } from '@shared/item/redux/item.reducers';
-import { OutfitEffects } from '@shared/outfit/redux/outfit.effect';
+import { ItemEffects } from '@core/item/redux/item.effect';
+import { ActionReducerMap, StoreModule } from '@ngrx/store';
 import { environment } from '@environment';
+import { OutfitEffects } from '@core/outfit/redux/outfit.effect';
+import { outfitReducer, OutfitState } from '@core/outfit/redux/outfit.reducers';
+import { itemReducer, ItemState } from '@core/item/redux/item.reducers';
 
 export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
+
+/* App reducer */
+
+interface AppState {
+  itemState: ItemState;
+  outfitState: OutfitState;
+}
+
+export const reducers: ActionReducerMap<AppState> = {
+  itemState: itemReducer,
+  outfitState: outfitReducer
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,9 +51,9 @@ export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoad
       }
     }),
     EffectsModule.forRoot([ItemEffects, OutfitEffects]),
-    StoreModule.forRoot({itemReducer}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
-      name: 'NgRx Demo App',
+      name: 'Closet App',
       logOnly: environment.production
     })
   ],

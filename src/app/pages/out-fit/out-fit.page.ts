@@ -1,19 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Outfit } from '@shared/outfit/outfit.model';
 import { ModalController } from '@ionic/angular';
 import { AddItemComponent } from '@shared/components/add-item/add-item.component';
 import { List } from '@shared/components/customList/list.model';
-import { OutfitService } from '@shared/outfit/api/outfit.service';
-
-const IMAGE_DIR = 'stored-images';
-
-interface LocalFile {
-  name: string;
-  path: string;
-  data: string;
-}
+import { OutfitService } from '@core/outfit/api/outfit.service';
+import { Outfit } from '@core/outfit/outfit.model';
 
 @Component({
   selector: 'app-out-fit',
@@ -26,7 +18,7 @@ export class OutFitPage implements OnInit {
   list = new List();
   outfitForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    temporada: new FormControl(''),
+    season: new FormControl(''),
     description: new FormControl(''),
     complements: new FormControl([]),
   });
@@ -38,7 +30,7 @@ export class OutFitPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.loadOutfit()
+    this.loadOutfit();
   }
 
   async addItemToOutfit() {
@@ -46,7 +38,7 @@ export class OutFitPage implements OnInit {
       component: AddItemComponent,
       componentProps: { title: 'Modal', list: [] }
     });
-    return await modal.present();
+    return modal.present();
   }
 
   loadOutfit() {

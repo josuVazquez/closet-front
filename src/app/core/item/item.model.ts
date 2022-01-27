@@ -1,12 +1,12 @@
 export class Item {
     id: string;
-    img:Array<any>;
+    img: Array<any>;
     name: string;
     type: string;
     description: string;
-    temporada: string;
+    season: string;
 
-    constructor(data:Partial<Item> = {}) {
+    constructor(data: Partial<Item> = {}) {
         if(!data.name) {
             new Error('Name is requiered');
             return;
@@ -19,10 +19,10 @@ export class Item {
         this.type = data.type;
         this.name = data.name;
         this.description = data.description || '';
-        this.temporada = data.temporada || '';
+        this.season = data.season || '';
     }
 
     getFotControlValues() {
-        return {name: this.name, temporada: this.temporada, description: this.description};
+        return {name: this.name, season: this.season, description: this.description};
     }
 }

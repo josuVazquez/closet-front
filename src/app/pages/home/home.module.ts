@@ -8,8 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { CoreModule } from '@core/core.module';
 import { ListModule } from '@shared/components/customList/list.module';
-
-
 @NgModule({
   imports: [
     CoreModule,
@@ -18,7 +16,7 @@ import { ListModule } from '@shared/components/customList/list.module';
     IonicModule,
     HomePageRoutingModule,
     TranslateModule.forChild(),
-    ListModule
+    ListModule,
   ],
   declarations: [HomePage]
 })

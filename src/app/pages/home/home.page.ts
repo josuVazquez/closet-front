@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { AppState } from '@capacitor/app';
 import { Store } from '@ngrx/store';
-import { loadItems } from '@shared/item/redux/item.actions';
-import { loadOutfits } from '@shared/outfit/redux/outfit.actions';
+import { loadItems } from '@core/item/redux/item.actions';
+import { loadOutfits } from '@core/outfit/redux/outfit.actions';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +11,9 @@ import { loadOutfits } from '@shared/outfit/redux/outfit.actions';
 export class HomePage {
 
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store) {
     this.store.dispatch(loadOutfits());
     this.store.dispatch(loadItems());
   }
-  
+
 }

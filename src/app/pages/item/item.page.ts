@@ -13,14 +13,15 @@ export class ItemPage implements OnInit {
   itemForm = new FormGroup({
     name: new FormControl('', Validators.required),
     type: new FormControl('', Validators.required),
-    temporada: new FormControl(''),
+    season: new FormControl(''),
     description: new FormControl(''),
     complements: new FormControl([]),
   });
-  
+
   constructor(private loading: LoadingController, private store: Store) { }
 
   ngOnInit() {
+    // this.store.select(selectedItem);
   }
 
   saveItem() {
