@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
 import { LoadingInterceptor } from '@core/loading.interceptor';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -41,7 +40,6 @@ export const reducers: ActionReducerMap<AppState> = {
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    CoreModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonPopover } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { KebabMenuComponent } from './kebab-menu/kebab-menu.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    KebabMenuComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { MenuComponent } from './menu/menu.component';
   ],
   exports: [
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    KebabMenuComponent
   ]
 })
 export class CoreModule { }
