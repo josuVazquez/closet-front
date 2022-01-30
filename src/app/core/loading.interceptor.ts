@@ -9,20 +9,20 @@ import { from, Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoaderService } from './service/loader.service';
 
-export const InterceptorSkipHeader = 'X-Skip-Interceptor';
+export const interceptorSkipHeader = 'X-Skip-Interceptor';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
-  constructor(private loaderService: LoaderService) { 
+  constructor(private loaderService: LoaderService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if ( true || !req.headers.has(InterceptorSkipHeader)) {
+    if ( true || !req.headers.has(interceptorSkipHeader)) {
       return next.handle(req);
     }
     // convert promise to observable using 'from' operator
-    return from(this.handle(req, next))
+    return from(this.handle(req, next));
   }
 
   async handle(req: HttpRequest<any>, next: HttpHandler) {

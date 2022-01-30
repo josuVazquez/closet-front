@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadItems } from '@core/item/redux/item.actions';
-import { loadOutfits } from '@core/outfit/redux/outfit.actions';
+import { Observable } from 'rxjs';
+import { loadAppData } from '@core/app-redux/app.actions';
+import { getAppList } from '@core/app-redux/app.selector';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,15 @@ import { loadOutfits } from '@core/outfit/redux/outfit.actions';
 })
 export class HomePage {
 
-
+  itemList$: Observable<any>;
   constructor(private store: Store) {
-    this.store.dispatch(loadOutfits());
-    this.store.dispatch(loadItems());
+    this.store.dispatch(loadAppData());
+    this.allList();
+  }
+
+  allList() {
+    // this.itemList$ = this.store.select(getAppList);
+    this.store.select(getAppList).subscribe(res => console.log(res));
   }
 
 }

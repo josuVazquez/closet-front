@@ -5,13 +5,14 @@ import { loadOutfits, loadOutfitsError, loadOutfitsSuccess } from './outfit.acti
 import { of } from 'rxjs';
 import { Outfit } from '../outfit.model';
 import { OutfitService } from '../api/outfit.service';
+import { loadAppData } from '@core/app-redux/app.actions';
 
 
 @Injectable()
 export class OutfitEffects {
   loadOutfits$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadOutfits),
+      ofType(loadOutfits, loadAppData),
       switchMap(() => this.outfitService.getOutfits().pipe(
         map( (outfits: Array<Outfit>) => loadOutfitsSuccess({outfits})),
         catchError(() => of(loadOutfitsError()))

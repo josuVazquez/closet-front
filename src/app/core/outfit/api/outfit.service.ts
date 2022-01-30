@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InterceptorSkipHeader } from '@core/loading.interceptor';
+import { interceptorSkipHeader } from '@core/loading.interceptor';
 import { ErrorHandlerService } from '@core/service/error-handler.service';
 import { environment } from '@environment';
 import { of } from 'rxjs';
@@ -11,12 +11,11 @@ import { catchError } from 'rxjs/operators';
 })
 export class OutfitService {
 
-  url = environment.backUrl + '/outfit'
+  url = environment.backUrl + '/outfit';
   constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) { }
 
   getOutfits() {
-    debugger;
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
     return this.http.get(`${this.url}`, {headers}).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
@@ -25,17 +24,17 @@ export class OutfitService {
   }
 
   deleteOutfit(id: string) {
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
     this.http.delete(`${this.url}delete/${id}`, {headers});
   }
 
   updateById(id: string, model: any) {
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
     this.http.put(`${this.url}update/${id}`, model, {headers});
   }
 
   getOutfitById(id) {
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
     return this.http.get(`${this.url}/${id}`, {headers}).pipe(catchError(
       (error) => {
         this.errorHandler.genericError(error);
@@ -44,7 +43,7 @@ export class OutfitService {
   }
 
   newOutfit(outFit: any) {
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
     return this.http.post(`${this.url}/new`, outFit, {headers}).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
