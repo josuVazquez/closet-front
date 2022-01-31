@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 import { KebabMenuService } from './kebab-menu.service';
 
 @Component({
@@ -6,10 +7,13 @@ import { KebabMenuService } from './kebab-menu.service';
   templateUrl: './kebab-menu.component.html',
   styleUrls: ['./kebab-menu.component.scss'],
 })
-export class KebabMenuComponent implements OnInit {
+export class KebabMenuComponent {
 
-  constructor(public kebabService: KebabMenuService) { }
+  constructor(public kebabService: KebabMenuService,
+    private popoverController: PopoverController) { }
 
-  ngOnInit() {}
-
+  itemListClick(item) {
+    item.action();
+    this.popoverController.dismiss();
+  }
 }

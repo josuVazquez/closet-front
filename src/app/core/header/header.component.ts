@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { KebabMenuComponent } from '@core/kebab-menu/kebab-menu.component';
 import { PopoverController } from '@ionic/angular';
 import { Header } from './header.model';
@@ -14,7 +15,9 @@ export class HeaderComponent {
   header: Header = new Header();
   headerSubscription: any;
 
-  constructor(private headerService: HeaderService, public popoverController: PopoverController) {
+  constructor(private headerService: HeaderService,
+    private router: Router,
+    public popoverController: PopoverController) {
     this.headerService.getHeaderData$().subscribe( data => {
       this.header = data;
     });
@@ -31,5 +34,9 @@ export class HeaderComponent {
 
   onDestroy() {
     this.headerSubscription.unSubscribe();
+  }
+
+  goHome() {
+    this.router.navigate(['home']);
   }
 }
