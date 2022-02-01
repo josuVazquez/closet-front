@@ -20,17 +20,14 @@ export class HomePage {
     { icon: 'trash-outline', description: 'Remove Item', action: () => { } }
   ];
 
+  list: any;
+
   constructor(private store: Store,
     private menuService: KebabMenuService,
     private router: Router) {
     this.store.dispatch(loadAppData());
-    this.allList();
+    this.list = this.store.select(getAppList);
     this.setKebabMenu();
-  }
-
-  allList() {
-    // this.itemList$ = this.store.select(getAppList);
-    this.store.select(getAppList).subscribe(res => console.log(res));
   }
 
   setKebabMenu() {

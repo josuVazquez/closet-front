@@ -6,12 +6,13 @@ import { List, ListItem } from './list.model';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
-  @Input() list: List = new List();
+export class ListComponent {
+  @Input() listItem: Array<ListItem> = [];
+  @Input() header = '';
+
   @Output() itemClick: EventEmitter<ListItem> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {}
+  constructor() {
+  }
 
 }

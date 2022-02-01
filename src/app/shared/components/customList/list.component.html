@@ -1,5 +1,5 @@
 <ion-list>
-  <ion-list-header *ngIf="list.header"> {{list.header}}
+  <ion-list-header *ngIf="header"> {{header}}
     <ion-item>
       <ion-input >
       </ion-input>
@@ -11,13 +11,20 @@
 
   </ion-list-header>
 
-  <ion-item *ngFor="let item of list.listItem" (click)="itemClick.emit(item)">
-
+  <ion-item *ngFor="let item of listItem" (click)="itemClick.emit(item)">
     <ion-avatar *ngIf="item.image">
     </ion-avatar>
-    <ion-label>
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description}} </p>
-    </ion-label>
+    <ion-item>
+      <ion-text>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description}} </p>
+      </ion-text>
+    </ion-item>
+    <ion-button slot="end" fill="clear" >
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" fill="clear">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
   </ion-item>
 </ion-list>

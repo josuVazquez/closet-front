@@ -3,19 +3,18 @@ export class List {
     listItem: ListItem[];
 
     constructor(list: Partial<List> = {}) {
-        this.header = list.header || null;
         this.listItem = list.listItem || [];
     }
 }
 
 export class ListItem {
     image: string;
-    title: string;
+    name: string;
     description: string;
 
-    constructor(list: Partial<ListItem> = {}) {
-        this.image = list.image || null;
-        this.title = list.title || '';
-        this.description = list.description || '';
+    constructor(item: Partial<ListItem> = {}) {
+        this.image = item.image || null;
+        this.name = item.name || '';
+        this.description = item.description || '';
     }
 }
