@@ -9,6 +9,7 @@ export class List {
 
 export class ListItem {
     image: string;
+    type: string;
     name: string;
     description: string;
 
@@ -16,5 +17,6 @@ export class ListItem {
         this.image = item.image || null;
         this.name = item.name || '';
         this.description = item.description || '';
+        this.type = item.type || 'Outfit';
     }
 }

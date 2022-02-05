@@ -3,6 +3,7 @@
   "rulesDirectory": [
     "codelyzer"
   ],
+  "no-underscore-dangle": false,
   "rules": {
     "array-type": false,
     "arrow-parens": false,

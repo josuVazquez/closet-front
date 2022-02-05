@@ -7,3 +7,6 @@ export const loadItemsError = createAction('[Item List] Load Items Error');
 
 export const updateItemSuccess = createAction('[Item] Update Item Success', props<{item: Item}>());
 export const updateItemError = createAction('[Item] Update Item Error');
+
+export const createItemSuccess = createAction('[Item] Update Item Success', props<{item: Item}>());
+export const createItemError = createAction('[Item] Update Item Error');

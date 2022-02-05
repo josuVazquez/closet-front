@@ -7,10 +7,10 @@ import { List, ListItem } from './list.model';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @Input() listItem: Array<ListItem> = [];
+  @Input() listItem: Array<any> = [];
   @Input() header = '';
 
-  @Output() itemClick: EventEmitter<ListItem> = new EventEmitter();
+  @Output() itemClick: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }

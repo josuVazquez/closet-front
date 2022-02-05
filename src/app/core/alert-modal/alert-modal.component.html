@@ -1,0 +1,14 @@
+<ng-container *ngIf="alertService.warningMesagge$ | async as warning">
+    <ion-header>
+        <ion-icon>{{warning.icon}}</ion-icon>
+        <ion-card-title>{{warning.header}}</ion-card-title>
+    </ion-header>
+    <ion-content>
+        {{warning.message}}
+    </ion-content>
+    <ion-footer>
+        <ion-button *ngFor="let button of warning.buttons" (click)="button.click()">
+            {{button.label}}
+        </ion-button>
+    </ion-footer>
+</ng-container>

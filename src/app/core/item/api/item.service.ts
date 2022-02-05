@@ -32,4 +32,18 @@ export class ItemService {
       return of();
     }));
   }
+
+  getItemById(id) {
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
+    return this.http.get(`${this.url}/${id}`, {headers}).pipe(catchError(
+      (error) => {
+        this.errorHandler.genericError(error);
+        return of();
+      }));
+  }
+
+  updateById(id: string, model: any) {
+    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
+    return this.http.put(`${this.url}/update/${id}`, model, {headers});
+  }
 }

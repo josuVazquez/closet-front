@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { KebabMenuComponent } from './kebab-menu/kebab-menu.component';
+import { AlertModalComponent } from './alert-modal/alert-modal.component';
 
 
 
@@ -13,7 +14,8 @@ import { KebabMenuComponent } from './kebab-menu/kebab-menu.component';
   declarations: [
     HeaderComponent,
     MenuComponent,
-    KebabMenuComponent
+    KebabMenuComponent,
+    AlertModalComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { KebabMenuComponent } from './kebab-menu/kebab-menu.component';
   exports: [
     HeaderComponent,
     MenuComponent,
-    KebabMenuComponent
+    KebabMenuComponent,
+    AlertModalComponent
   ]
 })
 export class CoreModule { }

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -22,6 +23,7 @@ export class OutFitPage implements OnInit {
     description: new FormControl(''),
     complements: new FormControl([]),
   });
+  outfit: Outfit;
 
   constructor(
     public modalController: ModalController,
@@ -47,14 +49,27 @@ export class OutFitPage implements OnInit {
       return;
     }
     this.outfitService.getOutfitById(id).subscribe( (outfit) => {
-      const objOutfit = new Outfit(outfit);
-      this.outfitForm.setValue(objOutfit.getFotControlValues());
+      this.outfit = new Outfit(outfit);
+      this.outfitForm.setValue(this.outfit.getFotControlValues());
     });
   }
 
   saveOutfit() {
+    if(this.outfit?._id) {
+      this.editOutfit();
+    } else {
+      this.createOutfit();
+    }
+  }
+
+  createOutfit() {
     const outFit = this.outfitForm.getRawValue();
     this.outfitService.newOutfit(outFit).subscribe( (res) => console.log(res));
+  }
+
+  editOutfit() {
+    const outFit = this.outfitForm.getRawValue();
     console.log(outFit);
+    this.outfitService.updateById(this.outfit._id, outFit).subscribe( (res) => console.log(res));
   }
 }

@@ -25,12 +25,12 @@ export class OutfitService {
 
   deleteOutfit(id: string) {
     const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    this.http.delete(`${this.url}delete/${id}`, {headers});
+    this.http.delete(`${this.url}/delete/${id}`, {headers});
   }
 
   updateById(id: string, model: any) {
     const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    this.http.put(`${this.url}update/${id}`, model, {headers});
+    return this.http.put(`${this.url}/update/${id}`, model, {headers});
   }
 
   getOutfitById(id) {

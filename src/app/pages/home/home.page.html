@@ -2,7 +2,8 @@
 </app-header>
 
 <ion-content>
-  <app-list [listItem]="list | async">
+  <app-list [listItem]="list | async" (itemClick)="itemClick($event)">
     
   </app-list>  
+  <button (click)="show()">Alert</button>
 </ion-content>
