@@ -11,8 +11,6 @@ export class ListComponent {
   @Input() header = '';
 
   @Output() itemClick: EventEmitter<any> = new EventEmitter();
-
-  constructor() {
-  }
+  @Output() deleteClick: EventEmitter<any> = new EventEmitter();
 
 }

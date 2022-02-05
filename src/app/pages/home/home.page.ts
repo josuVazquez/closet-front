@@ -6,7 +6,9 @@ import { loadAppData } from '@core/app-redux/app.actions';
 import { getAppList } from '@core/app-redux/app.selector';
 import { KebabMenuService } from '@core/kebab-menu/kebab-menu.service';
 import { Router } from '@angular/router';
-import { AlertModalService } from '@core/alert-modal/alert-modal.service';
+import { AlertController } from '@ionic/angular';
+import { deleteItem } from '@core/item/redux/item.actions';
+import { Item } from '@core/item/item.model';
 
 @Component({
   selector: 'app-home',
@@ -25,8 +27,8 @@ export class HomePage {
   list: any;
 
   constructor(private store: Store,
+    private alertControler: AlertController,
     private menuService: KebabMenuService,
-    private alertService: AlertModalService,
     private router: Router) {
     this.store.dispatch(loadAppData());
     this.list = this.store.select(getAppList);
@@ -49,7 +51,17 @@ export class HomePage {
     }
   }
 
-  show() {
-    this.alertService.error('Hola', 'Header');
+  async deleteItem(item: Item) {
+    const header = 'Warning';
+    const message = `You are about to delete de item ${item.name}`;
+    const buttons = [ {text: 'Acept', handler: () => { this.store.dispatch(deleteItem({item})); }}, {text: 'Cancel'}];
+    const alert = await this.alertControler.create({
+      header,
+      message,
+      cssClass: 'error-alert',
+      buttons
+    });
+    alert.present();
   }
+
 }

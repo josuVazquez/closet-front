@@ -17,10 +17,7 @@
       <ion-title>{{ item.name }}</ion-title>
       <ion-text> {{ item.description}}</ion-text>
       <ion-text>{{ item.type }}</ion-text>
-    <ion-button slot="end" fill="clear" >
-      <ion-icon name="pencil-outline"></ion-icon>
-    </ion-button>
-    <ion-button slot="end" fill="clear">
+    <ion-button slot="end" fill="clear" (click)="deleteClick.emit(item); $event.stopPropagation()">
       <ion-icon name="trash-outline"></ion-icon>
     </ion-button>
   </ion-item>

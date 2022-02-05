@@ -14,9 +14,9 @@ export class ErrorHandlerService {
     const message = 'Something whent wrong';
     const alert = await this.alertController.create({
       header,
-      message
+      message,
+      cssClass: 'error-alert'
     });
     alert.present();
-    console.error(error);
   }
 }

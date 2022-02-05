@@ -10,3 +10,7 @@ export const updateItemError = createAction('[Item] Update Item Error');
 
 export const createItemSuccess = createAction('[Item] Update Item Success', props<{item: Item}>());
 export const createItemError = createAction('[Item] Update Item Error');
+
+export const deleteItem = createAction('[Item] Delete Item', props<{item: Item}>());
+export const deleteItemSuccess = createAction('[Item] Delete Item Success', props<{deletedItem: Item}>());
+export const deleteItemError = createAction('[Item] Delete Item Error');

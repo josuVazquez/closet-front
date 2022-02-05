@@ -25,8 +25,7 @@ export class ItemService {
   }
 
   newItem(item: any) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.post(`${this.url}/new`, item, {headers}).pipe(catchError(
+    return this.http.post(`${this.url}/new`, item).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
       return of();
@@ -34,8 +33,7 @@ export class ItemService {
   }
 
   getItemById(id) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.get(`${this.url}/${id}`, {headers}).pipe(catchError(
+    return this.http.get(`${this.url}/${id}`).pipe(catchError(
       (error) => {
         this.errorHandler.genericError(error);
         return of();
@@ -43,7 +41,10 @@ export class ItemService {
   }
 
   updateById(id: string, model: any) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.put(`${this.url}/update/${id}`, model, {headers});
+    return this.http.put(`${this.url}/update/${id}`, model);
+  }
+
+  deleteItem(id: string) {
+    return this.http.delete(`${this.url}/delete/${id}`);
   }
 }

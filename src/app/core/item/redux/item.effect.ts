@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable arrow-body-style */
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { map, catchError, switchMap } from 'rxjs/operators';
-import { loadItems, loadItemsError, loadItemsSuccess } from './item.actions';
+import { deleteItem, deleteItemError, deleteItemSuccess, loadItems, loadItemsError, loadItemsSuccess } from './item.actions';
 import { of } from 'rxjs';
 import { Item } from '../item.model';
 import { ItemService } from '../api/item.service';
@@ -22,8 +23,20 @@ export class ItemEffects {
     }
   );
 
+  deleteIem$ = createEffect( () => {
+    return this.actions$.pipe(
+      ofType(deleteItem),
+      switchMap((item) => this.itemService.deleteItem(item.item._id).pipe(
+        map( (deletedItem: Item) => deleteItemSuccess({deletedItem})),
+        catchError(() => of(deleteItemError()))
+        ))
+      );
+    }
+  );
+
   constructor(
     private actions$: Actions,
     private itemService: ItemService
   ) {}
 }
+

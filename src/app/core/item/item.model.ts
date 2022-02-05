@@ -1,5 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 export class Item {
-    id: string;
+    _id: string;
     img: Array<any>;
     name: string;
     type: string;
@@ -15,11 +16,15 @@ export class Item {
             new Error('type is requiered');
             return;
         }
-        this.id = data.id || '';
+        this._id = data._id || '';
         this.type = data.type;
         this.name = data.name;
         this.description = data.description || '';
         this.season = data.season || '';
+    }
+    
+    get id() {
+        return this._id;
     }
 
     getFotControlValues() {

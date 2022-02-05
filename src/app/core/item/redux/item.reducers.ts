@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 import { createReducer, on, State } from '@ngrx/store';
 import { Item } from '../item.model';
-import { loadItemsSuccess, updateItemSuccess } from './item.actions';
+import { deleteItem, loadItemsSuccess, updateItemSuccess } from './item.actions';
 
 export interface ItemState {
   selectedItem: Item;
@@ -21,5 +22,10 @@ export const itemReducer = createReducer(
   on(loadItemsSuccess, (state, {items}): ItemState => ({
     ...state,
     itemList: [...items]
-  }))
+  })),
+  on(deleteItem, (state, {item}): ItemState => ({
+    ...state,
+    itemList: [...state.itemList.filter( i => i._id !== item._id)]
+  })),
+  // on(updateItem)
 );
