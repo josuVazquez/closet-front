@@ -20,6 +20,10 @@ import { OutfitEffects } from '@core/outfit/redux/outfit.effect';
 import { outfitReducer, OutfitState } from '@core/outfit/redux/outfit.reducers';
 import { itemReducer, ItemState } from '@core/item/redux/item.reducers';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginPipe } from './pages/login.pipe';
+
 export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
 /* App reducer */
@@ -35,12 +39,14 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginPipe],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

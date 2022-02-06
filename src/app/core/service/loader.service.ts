@@ -6,7 +6,7 @@ import { LoadingController, Platform } from '@ionic/angular';
 })
 export class LoaderService {
 
-  constructor(public loadingController: LoadingController, public plt: Platform) { 
+  constructor(public loadingController: LoadingController, public plt: Platform) {
   }
 
   showLoader() {
