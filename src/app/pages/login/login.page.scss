@@ -1,0 +1,76 @@
+@import "~src/utils/mixin.scss";
+
+.content {
+    --background: transparent url('../../../assets/img/background.jpg') no-repeat center center / cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    width: 65%;
+    @include medium {
+        width: 70%;
+    }
+    @include small {
+        width: 90%;
+    }
+
+    max-width: 60rem;
+    min-width: 15rem;
+
+    background-color: #ffffff;
+    border-radius: 1rem;
+    
+    .error {
+        color: var(--ion-color-danger);
+        padding: 0.8rem;
+        margin-left: 1rem;
+    }
+
+    .item {
+        text-align: center;
+        margin-top: 1rem;
+        width: 65%;
+        @include medium {
+            width: 70%;
+        }
+        @include small {
+            width: 90%;
+        }
+    }
+
+    .icon-input {
+        float: left;
+    }
+}
+
+
+.button-submit {
+    width: 12rem;
+    height: 3rem;
+    color: black;
+    background: transparent;
+    border-radius: 1rem;
+    @include small {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.ion-update {
+    --highlight-background: var(--highlight-color-focused);
+}

@@ -1,0 +1,41 @@
+<ion-content class="content">
+  <!-- Login box-->
+  <div class="container">
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitLogin()">
+      <ion-item lines="none" class="item">
+        <ion-title>
+          Login
+        </ion-title>
+      </ion-item>
+      <!-- ion-update is a workaround becouse Ionic Reactive form was triggering invalid on input focus  -->
+      <ion-item class="item" [class.ion-update]="!submitted">
+        <ion-icon class="icon-input" name="person-outline" slot="start"></ion-icon>
+        <ion-input formControlName="email" type="email" required placeholder="Email"></ion-input>
+        </ion-item>
+        <div *ngIf="isFieldinValid('email')" class="error">
+          El email no es valido
+        </div>
+        
+        <ion-item class="item" [class.ion-update]="!submitted">
+          <ion-icon class="icon-input" name="lock-open-outline" slot="start"></ion-icon>
+          <ion-input formControlName="pass" type="password" required placeholder="Contraseña"></ion-input>
+        </ion-item>
+        <div *ngIf="isFieldinValid('pass')" class="error">
+          La contraseña tiene que tener al menos 5 caracteres
+        </div>
+        <ion-item class="item">
+          Forgot password
+        </ion-item>
+        <!-- <ion-item class="toggle-item item" lines="none">
+          <span>Recordar</span>
+          <ion-toggle class="toggle" formControlName="remind"></ion-toggle>
+        </ion-item> -->
+        
+        <ion-button class="button-submit" type="submit" color="primary" expand="block">
+          Acceder
+        </ion-button>
+      </form>
+  </div>
+
+  <!-- end Login box-->
+</ion-content>

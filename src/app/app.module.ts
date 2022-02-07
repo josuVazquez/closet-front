@@ -22,7 +22,6 @@ import { itemReducer, ItemState } from '@core/item/redux/item.reducers';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { LoginPipe } from './pages/login.pipe';
 
 export const createTranslateLoader = (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -39,7 +38,7 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 @NgModule({
-  declarations: [AppComponent, LoginPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),
