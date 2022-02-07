@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from '@core/service/error-handler.service';
+import { GoogleAuthProvider } from '@firebase/auth';
 import { User } from './user.model';
 
 @Injectable({
@@ -12,7 +13,6 @@ export class AuthenticationService {
   constructor(
     private ngFireAuth: AngularFireAuth,
     private router: Router,
-    private ngZone: NgZone,
     private errroHandler: ErrorHandlerService
   ) {
     this.ngFireAuth.authState.subscribe(user => {
@@ -65,22 +65,21 @@ export class AuthenticationService {
 
   // Sign in with Gmail
   googleAuth() {
-    // return this.authLogin(new auth.GoogleAuthProvider());
+    return this.authLogin(new GoogleAuthProvider());
   }
 
   // Auth providers
   authLogin(provider) {
     return this.ngFireAuth.signInWithPopup(provider)
     .then((result) => {
-       this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
       this.setUserData(result.user);
     }).catch((error) => {
+      console.log(error);
+      // const message = error.
       this.errroHandler.genericError(error);
-      // window.alert(error);
     });
   }
+
   // Store user in localStorage
   setUserData(user) {
     const userData: User = {

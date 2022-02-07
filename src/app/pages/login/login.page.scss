@@ -67,10 +67,25 @@
     border-radius: 1rem;
     @include small {
         width: 100%;
-        margin: 0;
     }
 }
 
 .ion-update {
     --highlight-background: var(--highlight-color-focused);
 }
+
+@mixin externarl-login($color) {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    border: 2px solid $color;
+    ion-icon {
+        color: $color;
+    }
+}
+
+.google-login {
+    @include externarl-login(#DB4437);
+}
+

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { deleteItem } from '@core/item/redux/item.actions';
 import { Item } from '@core/item/item.model';
+import { AuthenticationService } from '@shared/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ export class HomePage {
   menuItems = [
     { icon: 'add-circle-outline', description: 'Add Item', action: () => { this.goTo('new-item'); } },
     { icon: 'add-circle-outline', description: 'Add Outfit', action: () => { this.goTo('new-outfit'); } },
-    { icon: 'trash-outline', description: 'Remove Item', action: () => { } }
+    { icon: 'trash-outline', description: 'Remove Item', action: () => { } },
+    { icon: 'log-out-outline', description: 'Log Out', action: () => { this.authService.signOut(); } }
   ];
 
   list: any;
@@ -29,6 +31,7 @@ export class HomePage {
   constructor(private store: Store,
     private alertControler: AlertController,
     private menuService: KebabMenuService,
+    private authService: AuthenticationService,
     private router: Router) {
     this.store.dispatch(loadAppData());
     this.list = this.store.select(getAppList);

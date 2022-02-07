@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '@shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +30,10 @@ export class LoginPage {
 
   submitted = false;
 
+  constructor(private authService: AuthenticationService, private router: Router) {
+
+  }
+
   submitLogin() {
     this.submitted = true;
     this.loginForm.controls.email.markAsTouched();
@@ -41,4 +47,10 @@ export class LoginPage {
     return !this.loginForm.get(field).valid && this.submitted;
   }
 
+
+  googleLogin() {
+    this.authService.googleAuth().then(succes => {
+      this.router.navigate(['home']);
+    }) ;
+  }
 }
