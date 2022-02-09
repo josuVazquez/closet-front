@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { interceptorSkipHeader } from '@core/loading.interceptor';
 import { ErrorHandlerService } from '@core/service/error-handler.service';
 import { environment } from '@environment';
 import { of } from 'rxjs';

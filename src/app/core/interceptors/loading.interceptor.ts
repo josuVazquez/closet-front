@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
-  HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { from, Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LoaderService } from './service/loader.service';
+import { LoaderService } from '@core/service/loader.service';
 
 export const interceptorSkipHeader = 'X-Skip-Interceptor';
 
