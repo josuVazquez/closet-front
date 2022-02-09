@@ -18,7 +18,7 @@ export class LoadingInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if ( true || !req.headers.has(interceptorSkipHeader)) {
+    if (req.headers.has(interceptorSkipHeader)) {
       return next.handle(req);
     }
     // convert promise to observable using 'from' operator

@@ -16,8 +16,7 @@ export class ItemService {
 
 
   getItems() {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.get(`${this.url}`, {headers}).pipe(catchError(
+    return this.http.get(`${this.url}`).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
       return of();

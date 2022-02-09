@@ -15,8 +15,7 @@ export class OutfitService {
   constructor(private http: HttpClient, private errorHandler: ErrorHandlerService) { }
 
   getOutfits() {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.get(`${this.url}`, {headers}).pipe(catchError(
+    return this.http.get(`${this.url}`).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
       return of();
@@ -24,18 +23,15 @@ export class OutfitService {
   }
 
   deleteOutfit(id: string) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    this.http.delete(`${this.url}/delete/${id}`, {headers});
+    this.http.delete(`${this.url}/delete/${id}`);
   }
 
   updateById(id: string, model: any) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.put(`${this.url}/update/${id}`, model, {headers});
+    return this.http.put(`${this.url}/update/${id}`, model);
   }
 
   getOutfitById(id) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.get(`${this.url}/${id}`, {headers}).pipe(catchError(
+    return this.http.get(`${this.url}/${id}`).pipe(catchError(
       (error) => {
         this.errorHandler.genericError(error);
         return of();
@@ -43,8 +39,7 @@ export class OutfitService {
   }
 
   newOutfit(outFit: any) {
-    const headers = new HttpHeaders().set(interceptorSkipHeader, '');
-    return this.http.post(`${this.url}/new`, outFit, {headers}).pipe(catchError(
+    return this.http.post(`${this.url}/new`, outFit).pipe(catchError(
     (error) => {
       this.errorHandler.genericError(error);
       return of();
